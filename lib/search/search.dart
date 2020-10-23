@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 
 
@@ -12,7 +12,7 @@ class _SearchState extends State<Search> {
  
   searchByName(String searchField) {
     return Firestore.instance
-        .collection('home/01gDJPGzq7QVszh6XPLIyRqmOlH3/index/')
+        .collection('slider/')
         .where('s',
             isEqualTo: searchField.substring(0, 1).toUpperCase())
         .getDocuments();

@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(future: () async {
-      FirebaseAuth auth = FirebaseAuth.instance;
-      FirebaseUser user = await auth.currentUser();
-      String uid = user.uid.toString();
-      return uid;
-    }(), builder: (ctx, futuresnapshot) {
-      if (futuresnapshot.connectionState == ConnectionState.waiting)
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+    // return FutureBuilder(future: () async {
+    //   // FirebaseAuth auth = FirebaseAuth.instance;
+    //   // FirebaseUser user = await auth.currentUser();
+    //   // String uid = user.uid.toString();
+    //   // return uid;
+    // }(), builder: (ctx, futuresnapshot) {
+    //   if (futuresnapshot.connectionState == ConnectionState.waiting)
+    //     return Center(
+    //       child: CircularProgressIndicator(),
+    //     );
       return StreamBuilder(
         stream: Firestore.instance
-            .collection('home/${futuresnapshot.data}/home')
+            .collection('slider/')
             .snapshots(),
         builder: (ctx, chatsnaphot) {
           if (chatsnaphot.connectionState == ConnectionState.waiting)
@@ -38,7 +37,7 @@ class HomeItem extends StatelessWidget {
                       height: 50,
                       width: double.infinity,
                       child: Text(
-                        chatdocs[index]['name'],
+                        chatdocs[index]['text'],
                         style: TextStyle(
                           fontSize: 30,
                         ),
@@ -60,7 +59,7 @@ class HomeItem extends StatelessWidget {
                                       topRight: Radius.circular(15),
                                     ),
                                     child: Image.network(
-                                      chatdocs[index]['image1'],
+                                       chatdocs[index]['userimage'],
                                       height: 170,
                                       width: 170,
                                       fit: BoxFit.cover,
@@ -79,7 +78,7 @@ class HomeItem extends StatelessWidget {
                                           horizontal: 20,
                                         ),
                                         child: Text(
-                                          chatdocs[index]['name1'],
+                                           chatdocs[index]['text'],
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 26),
                                           overflow: TextOverflow.fade,
@@ -105,7 +104,7 @@ class HomeItem extends StatelessWidget {
                                       topRight: Radius.circular(15),
                                     ),
                                     child: Image.network(
-                                      chatdocs[index]['image2'],
+                                       chatdocs[index]['userimage'],
                                       height: 170,
                                       width: 170,
                                       fit: BoxFit.cover,
@@ -124,7 +123,7 @@ class HomeItem extends StatelessWidget {
                                           horizontal: 20,
                                         ),
                                         child: Text(
-                                          chatdocs[index]['name2'],
+                                           chatdocs[index]['s'],
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 26),
                                           overflow: TextOverflow.fade,
@@ -151,7 +150,7 @@ class HomeItem extends StatelessWidget {
                                       topRight: Radius.circular(15),
                                     ),
                                     child: Image.network(
-                                      chatdocs[index]['image3'],
+                                       chatdocs[index]['userimage'],
                                       height: 170,
                                       width: 170,
                                       fit: BoxFit.cover,
@@ -170,7 +169,7 @@ class HomeItem extends StatelessWidget {
                                           horizontal: 20,
                                         ),
                                         child: Text(
-                                          chatdocs[index]['name3'],
+                                           chatdocs[index]['s'],
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 26),
                                           overflow: TextOverflow.fade,
@@ -196,7 +195,7 @@ class HomeItem extends StatelessWidget {
                                       topRight: Radius.circular(15),
                                     ),
                                     child: Image.network(
-                                      chatdocs[index]['image4'],
+                                       chatdocs[index]['userimage'],
                                       height: 170,
                                       width: 170,
                                       fit: BoxFit.cover,
@@ -215,7 +214,7 @@ class HomeItem extends StatelessWidget {
                                           horizontal: 20,
                                         ),
                                         child: Text(
-                                          chatdocs[index]['name4'],
+                                           chatdocs[index]['text'],
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 26),
                                           overflow: TextOverflow.fade,
@@ -252,6 +251,6 @@ class HomeItem extends StatelessWidget {
           );
         },
       );
-    });
+    // });
   }
 }
