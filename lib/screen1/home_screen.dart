@@ -1,8 +1,9 @@
 
-
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:first_app/widgets/drawer.dart';
+import 'package:first_app/widgets/home_item.dart';
+
+import 'package:first_app/widgets/image_slider.dart';
 
 
 

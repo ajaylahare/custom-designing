@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hardware/auth/auth_screen.dart';
-import 'package:hardware/main.dart';
-import 'package:hardware/screens2/services_info_reviews_screen.dart';
+
+
 
 class ProductsDetailScreen extends StatelessWidget {
   @override
@@ -34,9 +32,9 @@ class ProductsDetailScreen extends StatelessWidget {
               ),
             ],
             onChanged: (itemidentifier) {
-              if (itemidentifier == 'logout') FirebaseAuth.instance.signOut();
+              // if (itemidentifier == 'logout') FirebaseAuth.instance.signOut();
 
-              Navigator.popUntil(context, ModalRoute.withName("/"));
+              // Navigator.popUntil(context, ModalRoute.withName("/"));
               // Navigator.of(context).popAndPushNamed('/auth_screen');
             },
           )

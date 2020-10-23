@@ -1,9 +1,11 @@
-import 'package:carousel_slider/carousel_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+
+
 
 class ImageSlider extends StatefulWidget {
   @override
@@ -13,20 +15,21 @@ class ImageSlider extends StatefulWidget {
 class _ImageSliderState extends State<ImageSlider> {
   @override
   Widget build(BuildContext context) {
+    // return Scaffold();
     var title = "Image Slider Widget";
-    return FutureBuilder(future: () async {
-      FirebaseAuth auth = FirebaseAuth.instance;
-      FirebaseUser user = await auth.currentUser();
-      String uid = user.uid.toString();
-      return uid;
-    }(), builder: (ctx, futuresnapshot) {
-      if (futuresnapshot.connectionState == ConnectionState.waiting)
-        return Center(
-          child: CircularProgressIndicator(),
-        );
+    // return FutureBuilder(future: () async {
+    //   //FirebaseAuth auth = FirebaseAuth.instance;
+    //   //FirebaseUser user = await auth.currentUser();
+    //   //String uid = user.uid.toString();
+    //   //return uid;
+    // }(), builder: (ctx, futuresnapshot) {
+    //   if (futuresnapshot.connectionState == ConnectionState.waiting)
+    //     return Center(
+    //       child: CircularProgressIndicator(),
+    //     );
       return StreamBuilder(
         stream: Firestore.instance
-            .collection('home/${futuresnapshot.data}/slider')
+            .collection('slider/')
             .snapshots(),
         builder: (ctx, chatsnaphot) {
           if (chatsnaphot.connectionState == ConnectionState.waiting)
@@ -40,7 +43,7 @@ class _ImageSliderState extends State<ImageSlider> {
               child: CarouselSlider.builder(
                   itemCount: chatdocs.length,
                   itemBuilder: (ctx, index) =>  Container(
-         child: Image.network(chatdocs[index]['imageurl'],),
+         child: Image.network(chatdocs[index]['userimage'],),
          
                   ),
                   options: CarouselOptions(
@@ -57,6 +60,6 @@ class _ImageSliderState extends State<ImageSlider> {
         ),));
         },
       );
-    });
+    // });
   }
 }
