@@ -1,11 +1,19 @@
 // ignore: unused_import
 import 'dart:developer';
+import 'dart:ui';
+
+import 'package:first_app/screen1/category_to_all_item_screen.dart';
+import 'package:first_app/screen1/designing.dart';
+
+import 'package:first_app/screen3/colour_picker.dart';
+import 'package:first_app/screen3/product_screen.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:first_app/drawerscreen/buy_again_screen.dart';
 import 'package:first_app/drawerscreen/customer_service_screen.dart';
 import 'package:first_app/drawerscreen/setting_screen.dart';
-import 'package:first_app/drawerscreen/shopbycategory.dart';
+import 'package:first_app/drawerscreen/shopbycategory.dart'; 
 
 import 'package:first_app/drawerscreen/your%20account_screen.dart';
 import 'package:first_app/drawerscreen/your_notifications_screen.dart';
@@ -32,10 +40,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.pink,
-          backgroundColor: Colors.pink,
-          accentColor: Colors.deepPurple,
-          accentColorBrightness: Brightness.dark,
+         scaffoldBackgroundColor: Colors.white,
+          primarySwatch: Colors.teal,
+          backgroundColor: Colors.white,
+          accentColor: Colors.tealAccent,
+          accentColorBrightness: Brightness.light,
           buttonTheme: ButtonTheme.of(context).copyWith(
               buttonColor: Colors.pink,
               textTheme: ButtonTextTheme.primary,
@@ -48,17 +57,17 @@ class MyApp extends StatelessWidget {
            builder: (ctx, usersnapshot) {
             if (usersnapshot.hasData) 
           return  HomeScreen();
-            return Text('data');//AuthScreen();
+            return Scaffold();//AuthScreen();
          }),
       routes: {
-        '/setting_screen': (context) => YourSettingScreen(),
+        '/setting_screen': (context) => SettingsPage(),
         '/search': (context) => Search(),
         '/your_customer_service_screen': (context) =>YourCustomerServiceScreen(),
         '/your_buy_again_screen': (context) => YourBuyAgainScreen(),
-        '/your_account_screen': (context) => YourAccountScreen(),
+        '/your_account_screen': (context) => EditProfilePage(),
         '/your_wishlist_screen': (context) => YourWishlistScreen(),
         '/your_notify_screen': (context) => YourNotificationScreen(),
-        '/your_order_screen': (context) => YourOrderScreen(),
+        '/your_order_screen': (context) => FoodOrderPage(),
         '/Todays_deal_screen': (context) => TodaysDealScreen(),
         '/Shop_By_Category_screen': (context) => ShopByCategory(),
         '/Home_screen': (context) => HomeScreen(),
@@ -66,6 +75,11 @@ class MyApp extends StatelessWidget {
        // '/tab_screen': (context) => TabsScreen(),
         '/products_screen': (context) => ProductsDetailScreen(),
         '/service_review_info_screen': (context) => ServicesInfoReviewscreen(),
+        '/product_screen': (context) => ProductScreen('','',''),
+        '/colourpicker_screen': (context) => ColourPicker(),
+        '/categorytoallitem_screen': (context) => CategoryToAllItem('',),
+        '/designingScreen': (context) => DesigningScreen('','',''),
+      //  '/faltuscreen': (context) => AddProduct(),
       },
     );
   }

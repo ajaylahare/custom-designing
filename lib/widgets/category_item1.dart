@@ -1,18 +1,19 @@
-import 'package:first_app/screen1/category_to_all_item_screen.dart';
+
 // import 'package:first_app/screen3/product_screen.dart';
+import 'package:first_app/screen3/product_screen.dart';
 import 'package:flutter/material.dart';
 
-class CategoryItem extends StatelessWidget {
-    final String text;
+class CategoryItem1 extends StatelessWidget {
+    final String title;
   final String id;
-final String name;
+
   final String imageUrl;
-  CategoryItem(this.name,this.text, this.id, this.imageUrl);
+  CategoryItem1(this.title, this.id, this.imageUrl);
  void select(BuildContext ctx) {
     Navigator.push(
                   ctx,
                   MaterialPageRoute(
-                    builder: (context) => CategoryToAllItem(name),
+                    builder: (context) => ProductScreen(title,imageUrl,'\$10'),
                   ),
                 );
   }
@@ -46,7 +47,7 @@ final String name;
                 ),
                ),
               Text(
-                text,
+                title,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
                 
               overflow: TextOverflow.fade,

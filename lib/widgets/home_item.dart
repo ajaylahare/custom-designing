@@ -1,3 +1,4 @@
+import 'package:first_app/screen3/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -16,7 +17,7 @@ class HomeItem extends StatelessWidget {
     //     );
       return StreamBuilder(
         stream: Firestore.instance
-            .collection('slider/')
+            .collection('home/')
             .snapshots(),
         builder: (ctx, chatsnaphot) {
           if (chatsnaphot.connectionState == ConnectionState.waiting)
@@ -48,8 +49,9 @@ class HomeItem extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/Home_screen');
+                               onTap: () {// ProductScreen(chatdocs[index]['text'], chatdocs[index]['userimage']);
+                              //   Navigator.pushNamed(context, '/product_screen');
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProductScreen(chatdocs[index]['text'],chatdocs[index]['userimage'],chatdocs[index]['price'])));
                               },
                               child: Stack(
                                 children: <Widget>[
@@ -93,8 +95,10 @@ class HomeItem extends StatelessWidget {
                                 width: 1,
                                 child: VerticalDivider(color: Colors.grey)),
                             InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/Home_screen');
+                               onTap: () {// ProductScreen(chatdocs[index]['text'], chatdocs[index]['userimage']);
+                              //   Navigator.pushNamed(context, '/product_screen');
+                               // ProductScreen(chatdocs[index]['text'], chatdocs[index]['userimage']);
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProductScreen(chatdocs[index]['text'],chatdocs[index]['userimage1'],chatdocs[index]['price'])));
                               },
                               child: Stack(
                                 children: <Widget>[
@@ -104,7 +108,7 @@ class HomeItem extends StatelessWidget {
                                       topRight: Radius.circular(15),
                                     ),
                                     child: Image.network(
-                                       chatdocs[index]['userimage'],
+                                       chatdocs[index]['userimage1'],
                                       height: 170,
                                       width: 170,
                                       fit: BoxFit.cover,
@@ -123,7 +127,7 @@ class HomeItem extends StatelessWidget {
                                           horizontal: 20,
                                         ),
                                         child: Text(
-                                           chatdocs[index]['s'],
+                                           chatdocs[index]['text'],
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 26),
                                           overflow: TextOverflow.fade,
@@ -139,8 +143,10 @@ class HomeItem extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/Home_screen');
+                               onTap: () {// ProductScreen(chatdocs[index]['text'], chatdocs[index]['userimage']);
+                              //   Navigator.pushNamed(context, '/product_screen');
+                               // ProductScreen(chatdocs[index]['text'], chatdocs[index]['userimage']);
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProductScreen(chatdocs[index]['text'],chatdocs[index]['userimage1'],chatdocs[index]['price'])));
                               },
                               child: Stack(
                                 children: <Widget>[
@@ -150,7 +156,7 @@ class HomeItem extends StatelessWidget {
                                       topRight: Radius.circular(15),
                                     ),
                                     child: Image.network(
-                                       chatdocs[index]['userimage'],
+                                       chatdocs[index]['userimage1'],
                                       height: 170,
                                       width: 170,
                                       fit: BoxFit.cover,
@@ -169,7 +175,7 @@ class HomeItem extends StatelessWidget {
                                           horizontal: 20,
                                         ),
                                         child: Text(
-                                           chatdocs[index]['s'],
+                                           chatdocs[index]['text'],
                                           style: TextStyle(
                                               color: Colors.white, fontSize: 26),
                                           overflow: TextOverflow.fade,
@@ -184,8 +190,10 @@ class HomeItem extends StatelessWidget {
                                 width: 1,
                                 child: VerticalDivider(color: Colors.grey)),
                             InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/Home_screen');
+                              onTap: () {// ProductScreen(chatdocs[index]['text'], chatdocs[index]['userimage']);
+                        //Navigator.pushNamed(context, '/product_screen');
+                                //ProductScreen(chatdocs[index]['text'], chatdocs[index]['userimage']);
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => ProductScreen(chatdocs[index]['text'],chatdocs[index]['userimage'],chatdocs[index]['price'])));
                               },
                               child: Stack(
                                 children: <Widget>[

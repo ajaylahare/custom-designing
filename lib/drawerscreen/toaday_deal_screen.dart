@@ -1,9 +1,9 @@
+import 'package:first_app/screen3/product_screen.dart';
 import 'package:first_app/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 // import 'package:hardware/widgets/drawer.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 
 class TodaysDealScreen extends StatelessWidget {
   @override
@@ -30,9 +30,7 @@ class TodaysDealScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           return StreamBuilder(
-              stream: Firestore.instance
-                  .collection('slider/')
-                  .snapshots(),
+              stream: Firestore.instance.collection('home/').snapshots(),
               builder: (ctx, chatsnaphot) {
                 if (chatsnaphot.connectionState == ConnectionState.waiting)
                   return Center(
@@ -60,7 +58,12 @@ class TodaysDealScreen extends StatelessWidget {
                         children: [
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/Home_screen');
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ProductScreen(
+                                      chatdocs[index]['text'],
+                                      chatdocs[index]['userimage'],
+                                      chatdocs[index]['price'])));
+                              // Navigator.pushNamed(context, '/Home_screen');
                             },
                             child: Stack(
                               children: <Widget>[
@@ -89,7 +92,7 @@ class TodaysDealScreen extends StatelessWidget {
                                         horizontal: 20,
                                       ),
                                       child: Text(
-                                        chatdocs[index]['s'],
+                                        chatdocs[index]['text'],
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 26),
                                         overflow: TextOverflow.fade,
@@ -105,7 +108,12 @@ class TodaysDealScreen extends StatelessWidget {
                               child: VerticalDivider(color: Colors.grey)),
                           InkWell(
                             onTap: () {
-                              Navigator.pushNamed(context, '/Home_screen');
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ProductScreen(
+                                      chatdocs[index]['text'],
+                                      chatdocs[index]['userimage'],
+                                      chatdocs[index]['price'])));
+                              // Navigator.pushNamed(context, '/Home_screen');
                             },
                             child: Stack(
                               children: <Widget>[
@@ -134,9 +142,9 @@ class TodaysDealScreen extends StatelessWidget {
                                         horizontal: 20,
                                       ),
                                       child: Text(
-                                        chatdocs[index]['s'],
+                                        chatdocs[index]['text'],
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 26),
+                                            color: Colors.white, fontSize: 15),
                                         overflow: TextOverflow.fade,
                                         softWrap: true,
                                       ),
@@ -158,13 +166,14 @@ class TodaysDealScreen extends StatelessWidget {
                           child: Text(
                             'show more list    > > >',
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: 15,
                             ),
                           ),
                         ),
                       ),
                       Divider(
-                        height: 1,color: Colors.black,
+                        height: 1,
+                        color: Colors.black,
                       ),
                     ],
                   ),
