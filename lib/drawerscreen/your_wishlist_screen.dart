@@ -9,6 +9,7 @@ class YourWishlistScreen extends StatelessWidget {
         stream:Firestore.instance
             .collection('slider/')
             .snapshots(),
+        // ignore: missing_return
         builder: (ctx, usersnapshot) {
           if (usersnapshot.hasData)
             return Scaffold(
@@ -20,7 +21,7 @@ class YourWishlistScreen extends StatelessWidget {
                 child: Text('No wishlist Yet ,pls add some wishlist'),
               ),
             );
-          // return AuthScreen();
+          return Text('data');
         });
   }
 }

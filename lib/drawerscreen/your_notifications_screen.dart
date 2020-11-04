@@ -19,7 +19,7 @@ class YourNotificationScreen extends StatelessWidget {
                 child: Text('No notifications Yet ,pls order to get notifications'),
               ),
             );
-         // return AuthScreen();
+        return Text('data');
         });
   }
 }

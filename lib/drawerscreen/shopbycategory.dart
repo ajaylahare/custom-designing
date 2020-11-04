@@ -1,8 +1,7 @@
-import 'package:first_app/widgets/category_item.dart';
-import 'package:first_app/widgets/drawer.dart';
+import 'package:first_app/screen1/category%20detail.dart';
 import 'package:flutter/material.dart';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class ShopByCategory extends StatefulWidget {
   @override
@@ -12,64 +11,154 @@ class ShopByCategory extends StatefulWidget {
 class _ShopByCategoryState extends State<ShopByCategory> {
   @override
   Widget build(BuildContext context) {
-    return   Scaffold(
-      appBar:  AppBar(
-          centerTitle: true,
-          title: Text(
-            'HARDWARE',
-          ),),
-          drawer: AppDrawer(),
-          body: 
-                      
-                
-                                FutureBuilder(
-                                                future: () async {
-                                                  // FirebaseAuth auth = FirebaseAuth.instance;
-                                                  // FirebaseUser user = await auth.currentUser();
-                                                  // String uid = user.uid.toString();
-                                                  // return uid;
-                                                }(),
-                                                builder: (ctx, futuresnapshot) {
-                                                  if (futuresnapshot.connectionState ==
-                                                      ConnectionState.waiting)
-                                                    return Center(
-                                                      child: CircularProgressIndicator(),
-                                                    );
-                                                  return StreamBuilder(
-                                                      stream: Firestore.instance
-                                                          .collection(
-                                                              'slider/')
-                                                          .snapshots(),
-                                                      builder: (ctx, chatsnaphot) {
-                                                        if (chatsnaphot.connectionState ==
-                                                            ConnectionState.waiting)
-                                                          return Center(
-                                                            child: CircularProgressIndicator(),
-                                                          );
-                                                        final chatdocs = chatsnaphot.data.documents;
-                                                        return GridView.builder(
-                                                         // physics: NeverScrollableScrollPhysics(),
-                                                          itemCount: chatdocs.length,
-                                                          itemBuilder: (ctx, index) => CategoryItem(
-                                                            chatdocs[index]['text'],
-                                                            chatdocs[index]['userId'],
-                                                            chatdocs[index]['userimage'],
-                                                          ),
-                                                          gridDelegate:
-                                                              SliverGridDelegateWithMaxCrossAxisExtent(
-                                                            maxCrossAxisExtent: 200,
-                                                            childAspectRatio: 1 / 1,
-                                                            crossAxisSpacing: 10,
-                                                            mainAxisSpacing: 10,
-                                                          ),
-                                                        );
-                                                        
-                                                        
-                                                      });
-                                                },
-                                        
-                  
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          'HARDWARE',
+        ),
         
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Explore all Categories',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Mens Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryDetail('Mens Fashion'),
+                  ),
+                );
+                //  Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Womens Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryDetail('Womens Fashion'),
+                  ),
+                );
+                //  Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Boy Child Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryDetail('Boy Child Fashion'),
+                  ),
+                );
+                //  Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Girl Child Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryDetail('Girl Child Fashion'),
+                  ),
+                );
+                // Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Mug Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryDetail('Mug Fashion'),
+                  ),
+                );
+                // Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Mobile Cover Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryDetail('Mobile Cover Fashion'),
+                  ),
+                );
+                // Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Laptop Cover Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryDetail('Laptop Cover Fashion'),
+                  ),
+                );
+                // Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.shopping_bag),
+              title: Text('Others Fashion'),
+              trailing: Icon(Icons.add),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryDetail('Others Fashion'),
+                  ),
+                );
+                // Navigator.of(context).pushNamed('/your_notify_screen');
+              },
+            ),
+          ],
+        ),
       ),
                 
      
