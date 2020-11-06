@@ -1,12 +1,15 @@
-// ignore: unused_import
+
 import 'dart:developer';
 import 'dart:ui';
 
 import 'package:first_app/screen1/category_to_all_item_screen.dart';
-import 'package:first_app/screen1/designing.dart';
+import 'package:first_app/screen3/designing.dart';
 
 import 'package:first_app/screen3/colour_picker.dart';
+import 'package:first_app/screen3/language_screen.dart';
+import 'package:first_app/screen3/password%20change.dart';
 import 'package:first_app/screen3/product_screen.dart';
+import 'package:first_app/widgets/faltu.dart';
 
 
 import 'package:flutter/material.dart';
@@ -21,7 +24,7 @@ import 'package:first_app/drawerscreen/your_orders._screen.dart';
 import 'package:first_app/drawerscreen/your_wishlist_screen.dart';
 import 'package:first_app/screen1/home_screen.dart';
 import 'package:first_app/screen1/products_detail_screen.dart';
-import 'package:first_app/screen2/services_info_reviews_screen.dart';
+
 import 'package:first_app/search/search.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -74,12 +77,14 @@ class MyApp extends StatelessWidget {
        // '/auth_screen': (context) => AuthScreen(),
        // '/tab_screen': (context) => TabsScreen(),
         '/products_screen': (context) => ProductsDetailScreen(),
-        '/service_review_info_screen': (context) => ServicesInfoReviewscreen(),
+        
         '/product_screen': (context) => ProductScreen('','',''),
         '/colourpicker_screen': (context) => ColourPicker(),
         '/categorytoallitem_screen': (context) => CategoryToAllItem('',),
         '/designingScreen': (context) => DesigningScreen('','',''),
-      //  '/faltuscreen': (context) => AddProduct(),
+       '/faltuscreen': (context) => A(),
+       '/changepass_screen': (context) => ChangePass(true),
+        '/language_screen': (context) => LanguageScreen(),
       },
     );
   }

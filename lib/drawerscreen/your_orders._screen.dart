@@ -1,70 +1,4 @@
-// import 'package:flutter/material.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
 
-// class YourOrderScreen extends StatelessWidget {
-//   @override
-//   // Widget build(BuildContext context) {
-//   //   return StreamBuilder(
-//   //       stream:Firestore.instance
-//   //           .collection('slider/')
-//   //           .snapshots(),// FirebaseAuth.instance.onAuthStateChanged,
-//   //       builder: (ctx, usersnapshot) {
-//   //         if (usersnapshot.hasData)
-//   //           return Scaffold(
-//   //             appBar: AppBar(
-//   //               centerTitle: true,
-//   //               title: Text('your orders'),
-//   //             ),
-//   //             body: Center(
-//   //               child: Text('No orders Yet ,pls do some orders'),
-//   //             ),
-//   //           );
-//   //      //   return AuthScreen();
-//   //       });
-//   // }
-//   Widget build(BuildContext context) {
-//     var wdt = MediaQuery.of(context).size.width;
-//     var ps = Colors.black87;
-//     var ac = Colors.grey.shade300;
-//     var hgt = MediaQuery.of(context).size.height;
-
-//     Widget orderBuilder(String name, int quantity) {
-//       return Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//         children: [
-//           Text(
-//             name,
-//             style: TextStyle(fontSize: wdt / 20),
-//           ),
-//           Text(
-//             "x" + quantity.toString(),
-//             style: TextStyle(fontSize: wdt / 20),
-//           ),
-//         ],
-//       );
-//     }
-
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("My Orders"),
-//         backgroundColor: ps,
-//         centerTitle: true,
-//       ),
-//       body: Container(
-//         height: hgt / 1.2,
-//         padding: EdgeInsets.symmetric(horizontal: wdt / 20, vertical: hgt / 50),
-//         decoration: BoxDecoration(
-//             border: Border.all(width: wdt / 250), color: Colors.grey.shade200),
-//         margin: EdgeInsets.only(top: hgt / 35, left: wdt / 35, right: wdt / 35),
-//         child: SingleChildScrollView(
-//           child: Column(
-//             children: [orderBuilder("name", 5)],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -80,7 +14,7 @@ class _FoodOrderPageState extends State<FoodOrderPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFFAFAFA),
+          backgroundColor: Colors.tealAccent,
           elevation: 0,
           leading: IconButton(
             icon: Icon(
@@ -200,7 +134,7 @@ class PaymentMethodWidget extends StatelessWidget {
             children: <Widget>[
               Container(
                 alignment: Alignment.center,
-                child: Image.asset(
+                child: Image.network(
                   "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250",
                   width: 50,
                   height: 50,
@@ -464,7 +398,7 @@ class CartItem extends StatelessWidget {
                         ),
                         Container(
                           alignment: Alignment.centerRight,
-                          child: Image.asset(
+                          child: Image.network(
                             "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250",
                             width: 25,
                             height: 25,
@@ -475,7 +409,7 @@ class CartItem extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(left: 20),
                       alignment: Alignment.centerRight,
-                      child: AddToCartMenu(2),
+                     // child: AddToCartMenu(2),
                     )
                   ],
                 )
@@ -486,6 +420,8 @@ class CartItem extends StatelessWidget {
   }
 }
 
+
+
 class CartIconWithBadge extends StatelessWidget {
   int counter = 3;
 
@@ -493,12 +429,22 @@ class CartIconWithBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        IconButton(
-            icon: Icon(
-              Icons.business_center,
-              color: Color(0xFF3a3737),
+        Container(
+          margin: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+          height: 50,
+          width: 50,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(60),
             ),
-            onPressed: () {}),
+            child: IconButton(
+                icon: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.black,
+                ),
+                onPressed: () {}),
+          ),
+        ),
         counter != 0
             ? Positioned(
                 right: 11,
@@ -506,7 +452,7 @@ class CartIconWithBadge extends StatelessWidget {
                 child: Container(
                   padding: EdgeInsets.all(2),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.black26,
                     borderRadius: BorderRadius.circular(6),
                   ),
                   constraints: BoxConstraints(
@@ -516,8 +462,9 @@ class CartIconWithBadge extends StatelessWidget {
                   child: Text(
                     '$counter',
                     style: TextStyle(
-                      color: Colors.red,
+                      color: Colors.black,
                       fontSize: 8,
+                      fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -525,56 +472,6 @@ class CartIconWithBadge extends StatelessWidget {
               )
             : Container()
       ],
-    );
-  }
-}
-
-class AddToCartMenu extends StatelessWidget {
-  int productCounter;
-
-  AddToCartMenu(this.productCounter);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.remove),
-            color: Colors.black,
-            iconSize: 18,
-          ),
-          InkWell(
-            onTap: () => print('hello'),
-            child: Container(
-              width: 100.0,
-              height: 35.0,
-              decoration: BoxDecoration(
-                color: Color(0xFFfd2c2c),
-                border: Border.all(color: Colors.white, width: 2.0),
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: Center(
-                child: Text(
-                  'Add To $productCounter',
-                  style: new TextStyle(
-                      fontSize: 12.0,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w300),
-                ),
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.add),
-            color: Color(0xFFfd2c2c),
-            iconSize: 18,
-          ),
-        ],
-      ),
     );
   }
 }
