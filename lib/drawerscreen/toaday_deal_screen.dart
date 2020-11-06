@@ -14,7 +14,11 @@ class TodaysDealScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           "Today's deals",
+
         ),
+        actions: [
+          CartIconWithBadge(),
+        ],
       ),
       drawer: AppDrawer(),
       body: FutureBuilder(
@@ -49,7 +53,7 @@ class TodaysDealScreen extends StatelessWidget {
                         child: Text(
                           chatdocs[index]['text'],
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 20,
                           ),
                         ),
                       ),
@@ -65,43 +69,28 @@ class TodaysDealScreen extends StatelessWidget {
                                       chatdocs[index]['price'])));
                               // Navigator.pushNamed(context, '/Home_screen');
                             },
-                            child: Stack(
-                              children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15),
-                                    topRight: Radius.circular(15),
-                                  ),
-                                  child: Image.network(
-                                    chatdocs[index]['userimage'],
-                                    height: 170,
-                                    width: 170,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Positioned(
-                                    bottom: 20,
-                                    right: 10,
-                                    left: 10,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: 160,
-                                      color: Colors.black54,
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 10,
-                                        horizontal: 20,
-                                      ),
-                                      child: Text(
-                                        chatdocs[index]['text'],
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 26),
-                                        overflow: TextOverflow.fade,
-                                        softWrap: true,
-                                      ),
-                                    )),
-                              ],
+                            child: Card(
+                          elevation: 0,
+                          child: Column(
+                            children: [
+                           ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                            child: Image.network(
+                              chatdocs[index]['userimage'],
+                              height: 170,
+                              width: 170,
+                              fit: BoxFit.cover,
                             ),
                           ),
+                          Text(chatdocs[index]['text'],style: TextStyle(fontSize: 10),),
+                          Text(chatdocs[index]['price']),
+                            ],
+                          )
+                        ),
+                      ),
                           Container(
                               height: 200,
                               width: 1,
@@ -115,43 +104,29 @@ class TodaysDealScreen extends StatelessWidget {
                                       chatdocs[index]['price'])));
                               // Navigator.pushNamed(context, '/Home_screen');
                             },
-                            child: Stack(
-                              children: <Widget>[
-                                ClipRRect(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(15),
-                                    topRight: Radius.circular(15),
-                                  ),
-                                  child: Image.network(
-                                    chatdocs[index]['userimage'],
-                                    height: 170,
-                                    width: 170,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Positioned(
-                                    bottom: 20,
-                                    right: 10,
-                                    left: 10,
-                                    child: Container(
-                                      alignment: Alignment.center,
-                                      width: 160,
-                                      color: Colors.black54,
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 10,
-                                        horizontal: 20,
-                                      ),
-                                      child: Text(
-                                        chatdocs[index]['text'],
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 15),
-                                        overflow: TextOverflow.fade,
-                                        softWrap: true,
-                                      ),
-                                    )),
-                              ],
+                            child: Card(
+                          elevation: 0,
+                          child: Column(
+                            children: [
+                           ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
+                            child: Image.network(
+                              chatdocs[index]['userimage'],
+                              height: 170,
+                              width: 170,
+                              fit: BoxFit.cover,
                             ),
                           ),
+                          Text(chatdocs[index]['text'],style: TextStyle(fontSize: 10),),
+                          Text(chatdocs[index]['price']),
+                            ],
+                          )
+                        ),
+                      ),
+                          
                         ],
                       ),
                       InkWell(
@@ -181,6 +156,59 @@ class TodaysDealScreen extends StatelessWidget {
               });
         },
       ),
+    );
+  }
+}
+class CartIconWithBadge extends StatelessWidget {
+  int counter = 3;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+          height: 50,
+          width: 50,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(60),
+            ),
+            child: IconButton(
+                icon: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.black,
+                ),
+                onPressed: () {}),
+          ),
+        ),
+        counter != 0
+            ? Positioned(
+                right: 11,
+                top: 11,
+                child: Container(
+                  padding: EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  constraints: BoxConstraints(
+                    minWidth: 14,
+                    minHeight: 14,
+                  ),
+                  child: Text(
+                    '$counter',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 8,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              )
+            : Container()
+      ],
     );
   }
 }

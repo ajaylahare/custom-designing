@@ -1,4 +1,4 @@
-import 'package:first_app/screen1/designing.dart';
+import 'package:first_app/screen3/designing.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
@@ -47,11 +47,7 @@ class _ProductScreenState extends State<ProductScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // Container(
-              //   height: 60,
-              //   color: Colors.teal,
-              //   margin: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-              // ),
+              
               Card(
                 elevation: 49,
                 color: Colors.black,
@@ -107,19 +103,7 @@ class _ProductScreenState extends State<ProductScreen> {
               SizedBox(
                 height: 10,
               ),
-              // InkWell(
-              //   onTap: () {
-              //     Navigator.pushNamed(context, '/colourpicker_screen');
-              //   },
-              //   child: Text(
-              //     'choose your color',
-              //     textAlign: TextAlign.center,
-              //     style: TextStyle(
-              //       fontSize: 25,
-              //       color: Colors.red,
-              //     ),
-              //   ),
-              // ),
+              
               FlatButton(
                 minWidth: double.infinity,
                 color: Colors.red,

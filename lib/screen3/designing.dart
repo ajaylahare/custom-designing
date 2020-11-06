@@ -149,6 +149,7 @@ class _DesigningScreenState extends State<DesigningScreen> {
                         )
                       ],
                     ),
+                    
                     SizedBox(
                       height: 2.5,
                     ),
