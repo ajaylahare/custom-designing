@@ -3,8 +3,7 @@
 A new Flutter project.
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
+This project is made for clothes customization,where buyer can customize the clothes and order it.
 
 A few resources to get you started if this is your first Flutter project:
 
